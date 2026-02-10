@@ -3,6 +3,16 @@ const tarefas = [
   { id: 2, descricao: "Criar páginas no Figma", concluida: true }
 ];
 
+listarTarefas();
+
+console.log("Adicionando nova tarefa");
+criarTarefa("Estudando para o enem");
+
+atualizarTarefa(1, "", true);
+excluirTarefa(2);
+
+listarTarefas();
+
 function encontrarTarefaId(id) {
   for (let i = 0; i < tarefas.length; i++) {
     if (tarefas[i].id === id) {
@@ -66,13 +76,3 @@ function excluirTarefa(id) {
 
   console.log(`Tarefa removida: ${tarefaRemovida.descricao}`);
 }
-
-listarTarefas();
-
-console.log("Adicionando nova tarefa");
-criarTarefa("Estudando para o enem");
-
-atualizarTarefa(1, "", true);
-excluirTarefa(2);
-
-listarTarefas();
