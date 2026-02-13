@@ -3,17 +3,7 @@ const tarefas = [
   { id: 2, descricao: "Criar páginas no Figma", concluida: true }
 ];
 
-listarTarefas();
-
-console.log("Adicionando nova tarefa");
-criarTarefa("Estudando para o enem");
-
-atualizarTarefa(1, "", true);
-excluirTarefa(2);
-
-listarTarefas();
-
-function encontrarTarefaId(id) {
+export function encontrarTarefaId(id) {
   for (let i = 0; i < tarefas.length; i++) {
     if (tarefas[i].id === id) {
       return i;
@@ -22,7 +12,7 @@ function encontrarTarefaId(id) {
   return -1;
 }
 
-function listarTarefas() {
+export function listarTarefas() {
   console.log("LISTA DE TAREFAS");
 
   tarefas.forEach(function (tarefa) {
@@ -32,7 +22,7 @@ function listarTarefas() {
   });
 }
 
-function criarTarefa(descricao) {
+export function criarTarefa(descricao) {
   const novaTarefa = {
     id: tarefas.length + 1,
     descricao: descricao,
@@ -42,7 +32,7 @@ function criarTarefa(descricao) {
   tarefas.push(novaTarefa);
 }
 
-function atualizarTarefa(id, novaDescricao, novoStatus) {
+export function atualizarTarefa(id, novaDescricao, novoStatus) {
   const indiceEncontrado = encontrarTarefaId(id);
 
   if (indiceEncontrado === -1) {
@@ -63,7 +53,7 @@ function atualizarTarefa(id, novaDescricao, novoStatus) {
   console.log(`Tarefa ${tarefa.descricao} atualizada!`);
 }
 
-function excluirTarefa(id) {
+export function excluirTarefa(id) {
   const indiceEncontrado = encontrarTarefaId(id);
 
   if (indiceEncontrado === -1) {
