@@ -66,3 +66,7 @@ export function excluirTarefa(id) {
 
   console.log(`Tarefa removida: ${tarefaRemovida.descricao}`);
 }
+
+export function obterTarefas() {
+  return tarefas;
+}

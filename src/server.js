@@ -1,4 +1,5 @@
 import express from "express";
+import { criarTarefa, obterTarefas } from "./tarefas.js";
 
 const app = express();
 
@@ -8,6 +9,23 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Olá mundo!");
+});
+
+app.get("/tarefas", (req, res) => {
+  const tarefas = obterTarefas();
+  res.json(tarefas);
+});
+
+app.post("/tarefas", (req, res) => {
+  const { descricao } = req.body;
+
+  if (!descricao) {
+    return res.status(400).json({ erro: "Descrição é obrigatória" });
+  }
+
+  criarTarefa(descricao);
+  console.log(`✓ Tarefa criada: "${descricao}"`);
+  res.status(201).json({ mensagem: "Tarefa criada com sucesso!" });
 });
 
 app.listen(PORT, () => {
